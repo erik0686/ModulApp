@@ -1,9 +1,9 @@
 class StudentsController < ApplicationController
-  
+
   def new
     @student = Student.new
   end
-  
+
   def create
     @student = Student.new(students_params)
     if @student.save
@@ -41,6 +41,6 @@ class StudentsController < ApplicationController
 
   private
     def students_params
-      params.require(:student).permit(:name, :matricula)
+      params.require(:student).permit(:name, :matricula, :semester, :program_type, :group)
     end
 end

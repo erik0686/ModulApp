@@ -1,3 +1,13 @@
-<div>
-	
+<%= render "layouts/navbar" %>
+
+<div class="new-student">
+  <h1>New Student</h1>
+  <%= form_for @student do |f| %>
+    Full name: <%= f.text_field :name %><br />
+    ID number: <%= f.text_field :matricula %><br />
+    Semester: <%= f.number_field :semester %><br />
+    Group: <%= f.select :program_type, [401,402,403], include_blank: true %> <br>
+    Program: <%= f.select :program_type, program_type_selection, include_blank: true %><br />
+  <%= f.submit %>
+<% end %>
 </div>

@@ -1,8 +1,10 @@
-<div>
+<%= render "layouts/navbar" %>
+<div class="student-list">
 	<% @students.each do |student| %>
-		<h3><%= student.name %></h3>
-		<h3><%= student.matricula %></h3>
-		<h3><%= student.program_type %></h3>
-		<h3><%= student.semester %></h3>
+    <span>-----------------------</span>
+    <h5><%= link_to student.name, student_path(student) %></h5>
+		<li><%= student.matricula %></li>
+		<li><%= student.program_type %></li>
+		<li><%= student.semester.ordinalize %> semester</li>
 	<% end %>
 </div>
