@@ -1,0 +1,6 @@
+<%= render "layouts/navbar" %>
+<div class="">
+  <% @exam.student_exams.each do |student_exam| %>
+    <h1><%= student_exam.student.name %></h1>
+  <% end %>
+</div>

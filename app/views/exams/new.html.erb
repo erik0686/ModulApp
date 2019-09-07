@@ -1,0 +1,12 @@
+<%= render "layouts/navbar" %>
+
+<div class="new-student">
+  <h1>New Exam</h1>
+  <%= form_for @exam do |f| %>
+    Exam date: <%= f.date_field :exam_date %><br />
+    Module number: <%= f.number_field :module_number %><br />
+    Classroom: <%= f.text_field :classroom %><br />
+    Subject: <%= f.select :subject, ["PLC", "Mate 1", "Mate 2"], include_blank: true %> <br>
+  <%= f.submit %>
+<% end %>
+</div>

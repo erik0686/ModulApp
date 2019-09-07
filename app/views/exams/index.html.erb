@@ -1,0 +1,10 @@
+<%= render "layouts/navbar" %>
+<div class="student-list">
+	<% @exams.each do |exam| %>
+    <span>-----------------------</span>
+    <h5><%= link_to "Exam #{exam.module_number}", exam_path(exam) %></h5>
+		<li>Fecha de examen: <%= exam.exam_date %></li>
+		<li>Salón: <%= exam.classroom %></li>
+		<li>Materia: <%= exam.subject %></li>
+	<% end %>
+</div>
