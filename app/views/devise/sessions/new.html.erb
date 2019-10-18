@@ -1,0 +1,24 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<div class="login-container">
+    <%= image_tag("prepa.png", class: "logo_login")%>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field">
+        <%= f.label :email, "person_outline", class: "input-icon material-icons" %><br />
+        <%= f.email_field :email, autofocus: true, class: "input-field custom-input", placeholder:"EMAIL"%>
+      </div>
+
+      <div class="field">
+        <%= f.label :password, "lock_outline", class: "input-icon material-icons" %><br />
+        <%= f.password_field :password, autocomplete: "off", class: "input-field custom-input", placeholder:"PASSWORD" %>
+      </div>
+      <% if devise_mapping.rememberable? -%>
+        <div class="field check">
+          <%= f.check_box :remember_me, class: "checkbox" %>
+          <%= f.label :remember_me, class: "main-label" %>
+        </div>
+      <% end -%>
+      <div class="actions">
+        <%= f.submit "Log in", class: "button main-button" %>
+      </div>
+    <% end %>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_20_145954) do
+ActiveRecord::Schema.define(version: 2019_10_01_164959) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,13 +35,19 @@ ActiveRecord::Schema.define(version: 2019_08_20_145954) do
   end
 
   create_table "students", force: :cascade do |t|
-    t.string "matricula"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.string "id_number"
     t.string "name"
+    t.string "last_name"
+    t.string "group"
     t.integer "semester"
     t.string "program_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "group"
+    t.datetime "remember_created_at"
+    t.index ["email"], name: "index_students_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
   end
 
   add_foreign_key "student_exams", "exams"
