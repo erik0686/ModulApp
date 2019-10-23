@@ -7,14 +7,26 @@
       <div class="col col-3">Examen Módulo 2</div>
       <div class="col col-4">Examen Módulo 3</div>
     </li>
-    <% @students.each do |student| %>
-      <li class="table-row">
-        <div class="col col-1"> <%= link_to student.name, student_path(student) %></div>
-        <div class="col col-2"> <%= best_in_place student.exams.find_by(module_number:1).student_exams.find_by(student_id: student.id), :can_present, as: :checkbox, collection: { true: 'Yes', false: 'No'}, class:"can-present" %></div>
-        <div class="col col-3"> <%= best_in_place student.exams.find_by(module_number:2).student_exams.find_by(student_id: student.id), :can_present, as: :checkbox, collection: { true: 'Yes', false: 'No'}, class:"can-present" %></div>
-        <div class="col col-4"> <%= best_in_place student.exams.find_by(module_number:3).student_exams.find_by(student_id: student.id), :can_present, as: :checkbox, collection: { true: 'Yes', false: 'No'}, class:"can-present" %></div>
-      </li>
-  	<% end %>
+    <% if current_student.admin %>
+      <% @students.each do |student| %>
+        <li class="table-row">
+          <div class="col col-1"> <%= link_to student.name, student_path(student) %></div>
+          <div class="col col-2"> <%= best_in_place student.exams.find_by(module_number:1).student_exams.find_by(student_id: student.id), :can_present, as: :checkbox, collection: { true: 'Yes', false: 'No'}, class:"can-present" %></div>
+          <div class="col col-3"> <%= best_in_place student.exams.find_by(module_number:2).student_exams.find_by(student_id: student.id), :can_present, as: :checkbox, collection: { true: 'Yes', false: 'No'}, class:"can-present" %></div>
+          <div class="col col-4"> <%= best_in_place student.exams.find_by(module_number:3).student_exams.find_by(student_id: student.id), :can_present, as: :checkbox, collection: { true: 'Yes', false: 'No'}, class:"can-present" %></div>
+        </li>
+    	<% end %>
+    <% else %>
+      <% @students.each do |student| %>
+        <li class="table-row">
+          <div class="col col-1"> <%= student.name %></div>
+          <div class="col col-2"> <%= student.exams.find_by(module_number:1).student_exams.find_by(student_id: student.id)%></div>
+          <div class="col col-3"> <%= student.exams.find_by(module_number:2).student_exams.find_by(student_id: student.id)%></div>
+          <div class="col col-4"> <%= student.exams.find_by(module_number:3).student_exams.find_by(student_id: student.id)%></div>
+        </li>
+      <% end %>
+    <% end %>
+
 
   </ul>
 </div>
